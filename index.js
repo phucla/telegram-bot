@@ -1,6 +1,4 @@
 const { Telegraf } = require('telegraf');
-const axios = require('axios');
-const cheerio = require('cheerio');
 const express = require('express')
 require('dotenv').config(); 
  const { google } = require('googleapis');
