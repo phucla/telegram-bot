@@ -5,12 +5,6 @@ export async function scrapeWebsite(url) {
     try {
         const { data: html } = await axios.get(url);
         const $ = cheerio.load(html);
-        const results = [];
-        const mauvao = [];
-        const giaBanRa = []
-        // --- Customize your scraping logic here ---
-        // Example: Scrape all link texts from the page
-        const title = $('.headerindex1');
         const gia = $('.headerindex2');
         const banRa = $('.headerindex3');
      
