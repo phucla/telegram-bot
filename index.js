@@ -9,7 +9,6 @@ const { scrapeWebsite } = require('./src/scrapeWebsite')
 
 // Use environment variables for security in a real project
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const app = express();
 const port = 3000; // Or any desired port number
 const webhookDomain = 'https://telegram-bot-7lru.onrender.com'
 //const webhookDomain = 'http://localhost'
