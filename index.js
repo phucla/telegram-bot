@@ -130,25 +130,40 @@ bot.on('text', (ctx) => {
 
 // Launch the bot
 // bot.launch();
-bot.launch({
-    webhook: {
-        // Public domain for webhook; e.g.: example.com
-        domain: webhookDomain,
+// bot.launch({
+//     webhook: {
+//         // Public domain for webhook; e.g.: example.com
+//         domain: webhookDomain,
 
-        // Port to listen on; e.g.: 8080
-        port: port,
+//         // Port to listen on; e.g.: 8080
+//         port: port,
 
-        // Optional path to listen for.
-        // `bot.secretPathComponent()` will be used by default
-        // path: webhookPath,
+//         // Optional path to listen for.
+//         // `bot.secretPathComponent()` will be used by default
+//         // path: webhookPath,
 
-        // Optional secret to be sent back in a header for security.
-        // e.g.: `crypto.randomBytes(64).toString("hex")`
-        // secretToken: randomAlphaNumericString,
-    },
-});
+//         // Optional secret to be sent back in a header for security.
+//         // e.g.: `crypto.randomBytes(64).toString("hex")`
+//         // secretToken: randomAlphaNumericString,
+//     },
+// });
 // app.use(await bot.createWebhook({ domain: 'webhookDomain' }));
-
+exports.handler = async (event) => {
+  try {
+    // Process the Telegram webhook update
+    await bot.handleUpdate(event);
+    return {
+      statusCode: 200,
+      body: 'OK',
+    };
+  } catch (e) {
+    console.error('Error handling update:', e);
+    return {
+      statusCode: 500,
+      body: 'Internal Server Error',
+    };
+  }
+};
 bot.on("text", ctx => ctx.reply("Hello"));
 
 // app.listen(port, () => console.log("Listening on port", port));
