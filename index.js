@@ -6,6 +6,7 @@ require('dotenv').config();
 const { scrapeWebsite } = require('./src/scrapeWebsite')
 
 // Use environment variables for security in a real project
+console.log('Starting bot with token:', process.env.BOT_TOKEN ? '***' : 'No token provided');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const port = 3000; // Or any desired port number
 const webhookDomain = 'https://telegram-bot-7lru.onrender.com'
