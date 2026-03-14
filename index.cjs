@@ -2,7 +2,7 @@ import { Telegraf } from 'telegraf';
 import dotenv from 'dotenv'
 import { google } from 'googleapis';
 import express from 'express';
-import { scrapeWebsite } from './src/scrapeWebsite.js'
+import { scrapeWebsite } from './src/scrapeWebsite.cjs'
 dotenv.config()
 // Use environment variables for security in a real project
 console.log('Starting bot with token:', process.env.BOT_TOKEN ? '***' : 'No token provided');
