@@ -9,7 +9,7 @@ const { scrapeWebsite } = require('./src/scrapeWebsite')
 console.log('Starting bot with token:', process.env.BOT_TOKEN ? '***' : 'No token provided');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const port = 3000; // Or any desired port number
-const webhookDomain = 'https://telegram-bot-7lru.onrender.com'
+const webhookDomain = process.env.WEBHOOK_URL || 'https://telegram-bot-7lru.onrender.com'
 //const webhookDomain = 'http://localhost'
 
 
