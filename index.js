@@ -7,7 +7,7 @@ const { scrapeWebsite } = require('./src/scrapeWebsite.js')
 
 // Use environment variables for security in a real project
 console.log('Starting bot with token:', process.env.BOT_TOKEN ? '***' : 'No token provided');
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: false });
 const port = 3000; // Or any desired port number
 const webhookDomain = process.env.WEBHOOK_URL || 'https://telegram-bot-7lru.onrender.com'
 //const webhookDomain = 'http://localhost'
@@ -142,7 +142,7 @@ bot.on('text', (ctx) => {
 });
 
 // Launch the bot
-bot.launch();
+// bot.launch();
 // bot.launch({
 //   webhook: {
 //     // Public domain for webhook; e.g.: example.com
@@ -160,22 +160,22 @@ bot.launch();
 //     // secretToken: randomAlphaNumericString,
 //   },
 // });
-exports.handler = async (event) => {
-  try {
-    // Process the Telegram webhook update
-    await bot.handleUpdate(event);
-    return {
-      statusCode: 200,
-      body: 'OK',
-    };
-  } catch (e) {
-    console.error('Error handling update:', e);
-    return {
-      statusCode: 500,
-      body: 'Internal Server Error',
-    };
-  }
-};
+// exports.handler = async (event) => {
+//   try {
+//     // Process the Telegram webhook update
+//     await bot.handleUpdate(event);
+//     return {
+//       statusCode: 200,
+//       body: 'OK',
+//     };
+//   } catch (e) {
+//     console.error('Error handling update:', e);
+//     return {
+//       statusCode: 500,
+//       body: 'Internal Server Error',
+//     };
+//   }
+// };
 // app.use(await bot.createWebhook({ domain: 'webhookDomain' }));
 
 bot.on("text", ctx => ctx.reply("Hello"));
