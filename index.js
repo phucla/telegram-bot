@@ -12,6 +12,18 @@ const port = 3000; // Or any desired port number
 const webhookDomain = process.env.WEBHOOK_URL || 'https://telegram-bot-7lru.onrender.com'
 //const webhookDomain = 'http://localhost'
 
+const token = process.env.BOT_TOKEN;
+const app = express();
+app.use(express.json());
+
+// Webhook endpoint
+app.post(`/webhook/${token}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
+
+// Example: reply to /start
+
 
 // Function to perform web scraping
 // Khởi tạo Google Sheets API
@@ -170,3 +182,4 @@ bot.on("text", ctx => ctx.reply("Hello"));
 
 // app.listen(port, () => console.log("Listening on port", port));
 console.log('Bot is up and running port:', port);
+module.exports = app;
