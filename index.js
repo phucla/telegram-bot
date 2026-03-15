@@ -148,22 +148,22 @@ bot.launch();
 //     // secretToken: randomAlphaNumericString,
 //   },
 // });
-// exports.handler = async (event) => {
-//   try {
-//     // Process the Telegram webhook update
-//     await bot.handleUpdate(event);
-//     return {
-//       statusCode: 200,
-//       body: 'OK',
-//     };
-//   } catch (e) {
-//     console.error('Error handling update:', e);
-//     return {
-//       statusCode: 500,
-//       body: 'Internal Server Error',
-//     };
-//   }
-// };
+exports.handler = async (event) => {
+  try {
+    // Process the Telegram webhook update
+    await bot.handleUpdate(event);
+    return {
+      statusCode: 200,
+      body: 'OK',
+    };
+  } catch (e) {
+    console.error('Error handling update:', e);
+    return {
+      statusCode: 500,
+      body: 'Internal Server Error',
+    };
+  }
+};
 // app.use(await bot.createWebhook({ domain: 'webhookDomain' }));
 
 bot.on("text", ctx => ctx.reply("Hello"));
