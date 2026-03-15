@@ -1,5 +1,5 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+const axios =  require('axios');
+const cheerio = require('cheerio')
 
 async function scrapeWebsite(url) {
     try {
@@ -15,4 +15,5 @@ async function scrapeWebsite(url) {
     }
 }
 
-export { scrapeWebsite }
+// export { scrapeWebsite }
+module.exports = { scrapeWebsite };
